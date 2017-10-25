@@ -1,0 +1,19 @@
+-# in app/views/items/show.html.haml
+
+%h2 Details about #{@item.title}
+
+%ul#details
+  %li
+    Category:
+    = @item.category
+  %li
+    Posted on:
+    = @item.post_date.strftime("%B %d, %Y")
+
+%h3 Description:
+
+%p#description= @item.description
+
+= link_to 'Edit', edit_item_path(@item)
+= button_to 'Delete', item_path(@item), :method => :delete, :confirm => 'Are you sure?'
+= link_to 'Back to item list', items_path

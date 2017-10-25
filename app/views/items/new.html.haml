@@ -1,0 +1,17 @@
+%h1 Create New Item
+
+= form_tag items_path do
+
+  = label :item, :category, 'Category'
+  = select :item, :category, Item.all_categories
+  
+  = label :item, :title, 'Title'
+  = text_field :item, 'title'
+  
+  = label :item, :description, 'Description'
+  = text_field :item, 'description'
+  
+  = label :item, :post_date, 'Posted On'
+  = date_select :item, :post_date
+
+  = submit_tag 'Save Changes'

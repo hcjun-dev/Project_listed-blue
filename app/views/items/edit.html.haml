@@ -1,0 +1,16 @@
+-# edit.html.haml using partial
+
+%h1 Edit Existing Item
+
+= form_tag item_path(@item), :method => :put do
+
+  = label :item, :category, 'Category'
+  = select :item, :category, Item.all_categories
+  
+  = label :item, :title, 'Title'
+  = text_field :item, 'title'
+  
+  = label :item, :description, 'Description'
+  = text_field :item, 'description'
+
+  = submit_tag 'Update Item Info'
