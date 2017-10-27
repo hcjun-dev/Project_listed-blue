@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def item_params
-    params.require(:item).permit(:category, :title, :description, :post_date)
+    params.require(:item).permit(:category, :title, :description, :price, :post_date)
   end
 
   def show
@@ -31,7 +31,9 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create!(item_params)
+    @item = Item.new(item_params)
+    @item.post_date = Time.now
+    @item.save!
     flash[:notice] = "#{@item.title} was successfully created."
     redirect_to items_path
   end

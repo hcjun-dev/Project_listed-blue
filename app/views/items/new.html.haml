@@ -9,9 +9,9 @@
   = text_field :item, 'title'
   
   = label :item, :description, 'Description'
-  = text_field :item, 'description'
+  = text_area :item, 'description', size: "60x12"
   
-  = label :item, :post_date, 'Posted On'
-  = date_select :item, :post_date
+  = label :item, :price, 'Price'
+  = number_field :item, 'price', step: :any
 
   = submit_tag 'Save Changes'

@@ -4,9 +4,10 @@ class CreateItems < ActiveRecord::Migration
       t.string :category
       t.string :title
       t.text :description
+      t.decimal :price, :precision => 2
       t.datetime :post_date
       # Add fields that let Rails automatically keep track
-      # of when movies are added or modified:
+      # of when items are added or modified:
       t.timestamps
     end
   end
