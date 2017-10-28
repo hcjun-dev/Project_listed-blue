@@ -14,7 +14,7 @@
   = text_area :item, 'description', size: "60x12"
   
   = label :item, :price, 'Price'
-  = number_field :item, 'price', step: :any
+  = number_field :item, 'price', min: 0, step: 0.01
   
   %br
   %br
