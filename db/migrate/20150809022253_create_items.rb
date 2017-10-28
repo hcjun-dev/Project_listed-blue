@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :category
       t.string :title
       t.text :description
-      t.decimal :price, :precision => 2
+      t.decimal :price
       t.datetime :post_date
       # Add fields that let Rails automatically keep track
       # of when items are added or modified:

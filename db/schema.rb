@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150809022253) do
     t.string   "category"
     t.string   "title"
     t.text     "description"
-    t.decimal  "price",       precision: 2
+    t.decimal  "price"
     t.datetime "post_date"
     t.datetime "created_at"
     t.datetime "updated_at"
