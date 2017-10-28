@@ -8,7 +8,7 @@
   = select :item, :category, Item.all_categories
   
   = label :item, :title, 'Title'
-  = text_field :item, 'title'
+  = text_field :item, 'title', required: true
   
   = label :item, :description, 'Description'
   = text_area :item, 'description', size: "60x12"
@@ -16,5 +16,7 @@
   = label :item, :price, 'Price'
   = number_field :item, 'price', step: :any
   
-  = submit_tag 'Update Item Info'
-  = submit_tag 'Cancel'
+  %br
+  %br
+  = submit_tag 'Update Listing'
+  = link_to 'Cancel', items_path

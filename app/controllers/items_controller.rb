@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-before_filter :check_for_cancel, :only => [:create, :update]
 
   def item_params
     params.require(:item).permit(:category, :title, :description, :price, :post_date)
@@ -55,13 +54,6 @@ before_filter :check_for_cancel, :only => [:create, :update]
     @item.destroy
     flash[:notice] = "Item '#{@item.title}' deleted."
     redirect_to items_path
-  end
-  
-
-  def check_for_cancel
-    if params[:commit] == "Cancel"
-      redirect_to items_path
-    end
   end
   
 end
