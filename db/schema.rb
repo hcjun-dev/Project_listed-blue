@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20150809022253) do
   create_table "items", force: :cascade do |t|
     t.string   "category"
     t.string   "title"
+    t.string   "contact"
     t.text     "description"
     t.decimal  "price"
     t.datetime "post_date"

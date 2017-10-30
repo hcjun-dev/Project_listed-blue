@@ -3,6 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string :category
       t.string :title
+      t.string :contact
       t.text :description
       t.decimal :price
       t.datetime :post_date

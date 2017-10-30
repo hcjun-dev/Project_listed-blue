@@ -11,9 +11,14 @@
     = @item.post_date.strftime("%B %d, %Y")
   %li
     Price:
-    = @item.price
-
-%h3 Description:
+    -# shows the cents (2 decimal places)
+    = "$#{ number_with_precision(@item.price, :precision => 2)}" 
+    
+  %li
+    Contact Info:
+    = @item.contact
+%p
+  Description:
 
 %p#description= @item.description
 

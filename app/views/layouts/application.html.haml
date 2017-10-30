@@ -1,13 +1,14 @@
 !!!
 %html
   %head
-    %title Listed
+    %title ≡ Listed
     = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
   %body
-    %h1.title ≡Listed
+    %h1.title= link_to image_tag('main_logo_290x50.png'), items_path
+
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]
