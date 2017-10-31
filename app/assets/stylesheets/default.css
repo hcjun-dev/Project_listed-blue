@@ -6,6 +6,10 @@ html, body {
   font-family: Tahoma, Verdana, sans-serif;
   font-size: 10pt;
 }
+div#google{
+  float: right;
+  padding-right: 15px
+}
 div#main {
   margin: 0;
   padding: 0 20px 20px;
@@ -65,4 +69,16 @@ form label {
 }
 table#items th.hilite {
   background-color: maroon;
+}
+div#options{ 
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  width: 15%;
+  float: left;
+}
+div#details{ 
+  display: inline-block;
+  width: 85%;
+  float: right;
 }

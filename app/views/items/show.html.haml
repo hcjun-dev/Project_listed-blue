@@ -4,21 +4,21 @@
 
 %ul#details
   %li
-    Category:
+    %b Category:
     = @item.category
   %li
-    Posted on:
+    %b Posted on:
     = @item.post_date.strftime("%B %d, %Y")
   %li
-    Price:
+    %b Price:
     -# shows the cents (2 decimal places)
     = "$#{ number_with_precision(@item.price, :precision => 2)}" 
     
   %li
-    Contact Info:
+    %b Contact Info:
     = @item.contact
 %p
-  Description:
+  %b Description:
 
 %p#description= @item.description
 
