@@ -1,6 +1,6 @@
 %h1 Create New Item
 
-= form_tag items_path do
+= form_tag items_path(@user), :method => :put do
 
   = label :item, :category, 'Category'
   = select :item, :category, Item.all_categories
