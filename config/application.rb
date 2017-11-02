@@ -22,5 +22,10 @@ module Listed
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    
+    # Need to send contact email
+    config.action_mailer.perform_deliveries = true
+    gmail_username: 'listed.blue484@gmail.com'
+    gmail_password: 'listedblue484'
   end
 end

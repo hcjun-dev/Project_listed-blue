@@ -56,4 +56,10 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
   
+  def check_for_cancel
+    if params[:commit] == "Cancel"
+      redirect_to items_path
+    end
+  end
+  
 end

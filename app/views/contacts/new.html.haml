@@ -1,4 +1,8 @@
 %h1 Contact
+- if flash[:contact_errors]
+  - flash[:contact_errors].each do |msg| 
+    = msg
+
 = simple_form_for @contact, :method => :post do
 
   = label :contact, :name, 'Name'
@@ -15,3 +19,4 @@
   %br
   %br
   = submit_tag 'Send message'
+  = link_to 'Cancel', session[:return_to]

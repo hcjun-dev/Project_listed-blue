@@ -1,6 +1,6 @@
 %h1 Create New Item
 
-= form_tag items_path(@user), :method => :put do
+= form_tag items_path(@user), :method => :post do
 
   = label :item, :category, 'Category'
   = select :item, :category, Item.all_categories
@@ -21,4 +21,4 @@
   %br
   %br
   = submit_tag 'Post Listing'
-  = link_to 'Cancel', items_path
+  = link_to 'Cancel', :back
