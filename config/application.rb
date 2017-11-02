@@ -25,7 +25,5 @@ module Listed
     
     # Need to send contact email
     config.action_mailer.perform_deliveries = true
-    gmail_username: 'listed.blue484@gmail.com'
-    gmail_password: 'listedblue484'
   end
 end
