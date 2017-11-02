@@ -1,0 +1,17 @@
+%h1 Contact
+= simple_form_for @contact, :method => :post do
+
+  = label :contact, :name, 'Name'
+  = text_field :contact, 'name', required: true
+  
+  = label :contact, :email, 'Email'
+  = email_field :contact, 'email', required: true
+  
+  = label :contact, :message, 'Message'
+  = text_area :contact, 'message', size: "60x12"
+  
+  = hidden_field :contact, 'nickname'
+  
+  %br
+  %br
+  = submit_tag 'Send message'

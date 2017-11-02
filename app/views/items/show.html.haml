@@ -1,6 +1,7 @@
 -# in app/views/items/show.html.haml
 
-%h2 Details about #{@item.title}
+%h2
+  Details about #{@item.title}
 
 %ul#details
   %li
@@ -13,10 +14,8 @@
     %b Price:
     -# shows the cents (2 decimal places)
     = "$#{ number_with_precision(@item.price, :precision => 2)}" 
-    
   %li
-    %b Contact Info:
-    = @item.contact
+    = link_to t('Contact'), new_contact_path
 %p
   %b Description:
 

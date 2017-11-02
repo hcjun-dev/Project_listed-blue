@@ -34,6 +34,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'omniauth-google-oauth2'
 
+# Forms, mail
+gem 'mail_form', '~> 1.5.0.rc'
+gem 'simple_form', '~> 3.0.0.rc'
+
+gem 'bootstrap', '~> 4.0.0.beta2.1'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

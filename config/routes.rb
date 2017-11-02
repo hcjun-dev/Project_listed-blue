@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
+  
+  # Google
   get 'sessions/create'
-
   get 'sessions/destroy'
-  
   get 'auth/:provider/callback', to: 'sessions#create'
-  
   get 'auth/failure', to: redirect('/')
-  
   get 'signout', to: 'sessions#destroy', as: 'signout'
-  
   
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
@@ -19,5 +16,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'items#welcome'
   resources :items
+  
+  # Contact form
+  resources "contacts", only: [:new, :create]
   
 end
