@@ -11,7 +11,7 @@
   = text_field :item, 'title', required: true
   
   = label :item, :contact, 'Contact'
-  = text_field :item, 'contact', required: true
+  = text_field :item, 'contact', value: current_user.email, :readonly => true
   
   = label :item, :description, 'Description'
   = text_area :item, 'description', size: "60x12"

@@ -14,7 +14,7 @@ class ContactsController < ApplicationController
       @contact.request = request
       if @contact.deliver
         flash.now[:notice] = 'Thank you for your message!'
-        redirect_to session[:return_to]
+        redirect_to session.delete[:return_to]
         flash.keep
       else
         flash[:contact_errors] = @contact.errors.full_messages

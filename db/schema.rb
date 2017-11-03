@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20171030161139) do
     t.datetime "post_date"
     t.string   "contact"
     t.string   "user"
+    t.string   "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

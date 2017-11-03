@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+  
   def item_params
     params.require(:item).permit(:category, :title, :description, :price, :post_date, :contact, :user)
   end
@@ -11,7 +11,6 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
     @all_categories = Item.all_categories
     @sort_by = params[:sort_by] ? params[:sort_by] : (session[:sort_by] || "id")
     @hilite = params[:sort_by]
@@ -26,52 +25,60 @@ class ItemsController < ApplicationController
     @items = Item.order(@sort_by).where(category: @filtered_categories)
   end
   
-  def new
-    if !current_user
+  # This allows only users that are signed in the ability to make listings
+  before_filter :is_user?, :only =>[:create, :new]
+  def is_user?
+    if current_user
+      # Do the conttroller action
+    else
       flash[:notice] = "You must login to create items."
       redirect_to items_path
     end
+  end
+  
+  # This allows only the user who created the listing to change it
+  before_filter :can_user?, :only =>[:edit, :update, :destroy]
+  def can_user?
+    @item = Item.find(params[:id])
+    if current_user && @item.user_id == :user_id.to_s
+      # Do the conttroller action
+    else
+      flash[:notice] = "You can't edit/delete this item."
+      redirect_to item_path
+    end
+  end
+  
+  def new
     # default: render 'new' template
   end
 
   def create
     @item = Item.new(item_params)
-    if current_user
-      @item.post_date = Time.now
-      @item.save!
-      flash[:notice] = "#{@item.title} was successfully created."
-      redirect_to items_path
-    end
+    @item.post_date = Time.now
+    @item.user_id = :user_id.to_s
+    @item.user = current_user.name
+    @item.contact = current_user.email
+    @item.save!
+    flash[:notice] = "#{@item.title} was successfully created."
+    redirect_to items_path
   end
 
   def edit
-    if current_user
-      @item = Item.find params[:id]
-    else
-      flash[:notice] = "You can't edit this item."
-      redirect_to item_path
-    end
+    # Find item done in before_filter
   end
 
   def update
-    if current_user
-      @item = Item.find params[:id]
-      @item.update_attributes!(item_params)
-      flash[:notice] = "#{@item.title} was successfully updated."
-      redirect_to item_path(@item)
-    end
+    # Find item done in before_filter
+    @item.update_attributes!(item_params)
+    flash[:notice] = "#{@item.title} was successfully updated."
+    redirect_to item_path(@item)
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    if current_user
-      @item.destroy
-      flash[:notice] = "Item '#{@item.title}' deleted."
-      redirect_to items_path
-    else
-      flash[:notice] = "You can't delete this item."
-      redirect_to item_path
-    end
+    # Find item done in before_filter
+    @item.destroy
+    flash[:notice] = "Item '#{@item.title}' deleted."
+    redirect_to items_path
   end
   
   def check_for_cancel

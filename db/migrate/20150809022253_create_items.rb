@@ -8,6 +8,7 @@ class CreateItems < ActiveRecord::Migration
       t.datetime :post_date
       t.string :contact
       t.string :user
+      t.string :user_id
       # Add fields that let Rails automatically keep track
       # of when items are added or modified:
       t.timestamps
