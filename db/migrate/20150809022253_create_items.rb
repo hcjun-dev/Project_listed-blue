@@ -3,10 +3,11 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string :category
       t.string :title
-      t.string :contact
       t.text :description
       t.decimal :price
       t.datetime :post_date
+      t.string :contact
+      t.string :user
       # Add fields that let Rails automatically keep track
       # of when items are added or modified:
       t.timestamps

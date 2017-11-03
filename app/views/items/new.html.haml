@@ -9,7 +9,7 @@
   = text_field :item, 'title', required: true
   
   = label :item, :contact, 'Contact'
-  = text_field :item, 'contact', required: true
+  = text_field :item, 'contact', value: current_user.name
   
   = label :item, :description, 'Description'
   = text_area :item, 'description', size: "60x12"
@@ -21,4 +21,4 @@
   %br
   %br
   = submit_tag 'Post Listing'
-  = link_to 'Cancel', :back
+  = link_to 'Cancel', items_path

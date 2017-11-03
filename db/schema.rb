@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20171030161139) do
     t.string   "category"
     t.string   "title"
     t.string   "contact"
+    t.string   "user"
     t.text     "description"
     t.decimal  "price"
     t.datetime "post_date"

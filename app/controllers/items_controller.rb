@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def item_params
-    params.require(:item).permit(:category, :title, :description, :price, :post_date, :contact)
+    params.require(:item).permit(:category, :title, :description, :price, :post_date, :contact, :user)
   end
 
   def show
@@ -27,33 +27,51 @@ class ItemsController < ApplicationController
   end
   
   def new
+    if !current_user
+      flash[:notice] = "You must login to create items."
+      redirect_to items_path
+    end
     # default: render 'new' template
   end
 
   def create
     @item = Item.new(item_params)
-    @item.post_date = Time.now
-    @item.save!
-    flash[:notice] = "#{@item.title} was successfully created."
-    redirect_to items_path
+    if current_user
+      @item.post_date = Time.now
+      @item.save!
+      flash[:notice] = "#{@item.title} was successfully created."
+      redirect_to items_path
+    end
   end
 
   def edit
-    @item = Item.find params[:id]
+    if current_user
+      @item = Item.find params[:id]
+    else
+      flash[:notice] = "You can't edit this item."
+      redirect_to item_path
+    end
   end
 
   def update
-    @item = Item.find params[:id]
-    @item.update_attributes!(item_params)
-    flash[:notice] = "#{@item.title} was successfully updated."
-    redirect_to item_path(@item)
+    if current_user
+      @item = Item.find params[:id]
+      @item.update_attributes!(item_params)
+      flash[:notice] = "#{@item.title} was successfully updated."
+      redirect_to item_path(@item)
+    end
   end
 
   def destroy
     @item = Item.find(params[:id])
-    @item.destroy
-    flash[:notice] = "Item '#{@item.title}' deleted."
-    redirect_to items_path
+    if current_user
+      @item.destroy
+      flash[:notice] = "Item '#{@item.title}' deleted."
+      redirect_to items_path
+    else
+      flash[:notice] = "You can't delete this item."
+      redirect_to item_path
+    end
   end
   
   def check_for_cancel
