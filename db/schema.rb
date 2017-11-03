@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 20171030161139) do
   create_table "items", force: :cascade do |t|
     t.string   "category"
     t.string   "title"
-    t.string   "contact"
-    t.string   "user"
     t.text     "description"
     t.decimal  "price"
     t.datetime "post_date"
+    t.string   "contact"
+    t.string   "user"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20171030161139) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.string   "email"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.datetime "created_at",       null: false
