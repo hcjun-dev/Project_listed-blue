@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
   before_filter :can_user?, :only =>[:edit, :update, :destroy]
   def can_user?
     @item = Item.find(params[:id])
-    if current_user && @item.user_id == :user_id.to_s
+    if current_user && @item.user_id == current_user.uid.to_s
       # Do the conttroller action
     else
       flash[:notice] = "You can't edit/delete this item."
@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.post_date = Time.now
-    @item.user_id = :user_id.to_s
+    @item.user_id = current_user.uid.to_s
     @item.user = current_user.name
     @item.contact = current_user.email
     @item.save!
