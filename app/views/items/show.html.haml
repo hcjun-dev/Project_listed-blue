@@ -16,8 +16,6 @@
     = "$#{ number_with_precision(@item.price, :precision => 2)}" 
   %li
     = link_to t('Contact'), new_contact_path(session[:item_id] = @item.id)
-  %li
-    = link_to 'Rate Seller', users_path(session[:user] = @item.user_id)
 %p
   %b Description:
 
