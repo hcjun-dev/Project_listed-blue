@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
-
+  
   # Contact form
   match '/contacts', to: 'contacts#new', via: 'get'
   resources "contacts", only: [:new, :create]

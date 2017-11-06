@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
     if current_user && @item.user_id == current_user.uid.to_s
       # Do the conttroller action
     else
-      flash[:notice] = "You can't edit/delete this item."
+      flash[:notice] = "You cannot perform this action."
       redirect_to item_path
     end
   end

@@ -19,4 +19,4 @@
   %br
   %br
   = submit_tag 'Send message'
-  = link_to 'Cancel', session[:return_to]
+  = link_to 'Cancel', session.delete(:return_to)

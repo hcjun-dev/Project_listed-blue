@@ -11,10 +11,16 @@ class ContactsController < ApplicationController
   def create
     begin
       @contact = Contact.new(contacts_params)
+      # Gets the needed information from the listing
+      @item = Item.find(session[:item_id])
+      @contact.item_title = @item.title
+      @contact.item_email = @item.contact
+      # The End
       @contact.request = request
       if @contact.deliver
+        session.delete(:item_id)
         flash.now[:notice] = 'Thank you for your message!'
-        redirect_to session.delete[:return_to]
+        redirect_to session.delete(:return_to)
         flash.keep
       else
         flash[:contact_errors] = @contact.errors.full_messages

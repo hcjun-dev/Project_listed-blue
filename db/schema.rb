@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20171030161139) do
     t.string   "uid"
     t.string   "name"
     t.string   "email"
+    t.decimal  "goodrating"
+    t.decimal  "badrating"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.datetime "created_at",       null: false

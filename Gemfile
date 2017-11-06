@@ -38,7 +38,7 @@ gem 'omniauth-google-oauth2'
 gem 'mail_form', '~> 1.5.0.rc'
 gem 'simple_form', '~> 3.0.0.rc'
 
-gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'bootstrap-sass'
 
 
 group :development, :test do
