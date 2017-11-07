@@ -16,6 +16,9 @@
     = "$#{ number_with_precision(@item.price, :precision => 2)}" 
   %li
     = link_to t('Contact'), new_contact_path(session[:item_id] = @item.id)
+  %li
+    = link_to 'Seller Rating', users_rate_path(session[:user] = @item.user_id)
+    = " #{number_with_precision(@rating_percentage, :precision => 2)}%"
 %p
   %b Description:
 

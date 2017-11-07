@@ -8,6 +8,9 @@ class ItemsController < ApplicationController
     id = params[:id] # retrieve item ID from URI route
     @item = Item.find(id) # look up item by unique ID
     # will render app/views/items/show.<extension> by default
+    if @user = User.find_by_uid(@item.user_id)
+      @rating_percentage = (@user.rating/@user.total_rating*100)
+    end
   end
 
   def index
