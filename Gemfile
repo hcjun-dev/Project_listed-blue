@@ -38,7 +38,10 @@ gem 'omniauth-google-oauth2'
 gem 'mail_form', '~> 1.5.0.rc'
 gem 'simple_form', '~> 3.0.0.rc'
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.7'
+
+# Paperclip used for adding images in ActiveRecord
+gem "paperclip", "~> 3.1"
 
 
 group :development, :test do

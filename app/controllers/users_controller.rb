@@ -5,16 +5,26 @@ class UsersController < ApplicationController
   end
   
   def rating
-    @user = User.find_by_uid(session[:user])
-    if @user.total_rating.nil? && @user.rating.nil?
-      @user.rating = BigDecimal.new(user_params[:rating])
-      @user.total_rating = 5
+    if current_user
+      if not current_user.uid.to_s == session[:user]
+        @user = User.find_by_uid(session[:user])
+        if @user.total_rating.nil? && @user.rating.nil?
+          @user.rating = BigDecimal.new(user_params[:rating])
+          @user.total_rating = 5
+        else
+          @user.rating += BigDecimal.new(user_params[:rating])
+          @user.total_rating += 5
+        end
+        @user.save!
+        redirect_to item_path(session[:item_id]) and return
+      else
+        flash[:notice] = "You cannot review yourself."
+      end
     else
-      @user.rating += BigDecimal.new(user_params[:rating])
-      @user.total_rating += 5
+      flash[:notice] = "You must login."
     end
-    @user.save!
-    redirect_to item_path(session[:item_id])
+    flash.keep
+    redirect_to users_rate_path(session[:user])
   end
   
 end

@@ -46,6 +46,9 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.1.0)
+    climate_control (0.2.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.2)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -109,6 +112,9 @@ GEM
       actionmailer (>= 3.2, < 5)
       activemodel (>= 3.2, < 5)
     method_source (0.9.0)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
     mini_mime (0.1.4)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
@@ -138,6 +144,11 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    paperclip (3.5.4)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.21.0)
     pry (0.11.2)
       coderay (~> 1.1.0)
@@ -250,7 +261,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
+  bootstrap-sass (~> 3.3.7)
   byebug
   coffee-rails (~> 4.1.0)
   guard-rspec
@@ -259,6 +270,7 @@ DEPENDENCIES
   jquery-rails
   mail_form (~> 1.5.0.rc)
   omniauth-google-oauth2
+  paperclip (~> 3.1)
   pg
   rails (= 4.2.6)
   rails_12factor
