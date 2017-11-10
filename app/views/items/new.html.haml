@@ -1,24 +1,31 @@
-%h1 Create New Item
+%div.container
+  %h1 Create New Item
 
-= form_tag items_path(@user), :method => :post do
 
-  = label :item, :category, 'Category'
-  = select :item, :category, Item.all_categories
-  
-  = label :item, :title, 'Title'
-  = text_field :item, 'title', required: true
-  
-  = label :item, :contact, 'Contact'
-  = text_field :item, 'contact', value: current_user.email, :readonly => true
-  
-  = label :item, :description, 'Description'
-  = text_area :item, 'description', size: "60x12"
-  
-  = label :item, :price, 'Price'
-  = number_field :item, 'price', min: 0, step: 0.01
-  
-  
-  %br
-  %br
-  = submit_tag 'Post Listing'
-  = link_to 'Cancel', items_path
+  %div#new_item_forms
+    = form_tag items_path(@user), :method => :post do
+    
+      = label :item, :category, 'Category'
+      = select :item, :category, Item.all_categories
+      %br
+      
+      = label :item, :title, 'Title'
+      = text_field :item, 'title', required: true
+      %br
+      
+      = label :item, :contact, 'Contact'
+      = text_field :item, 'contact', value: current_user.email, :readonly => true
+      %br
+      
+      = label :item, :description, 'Description'
+      = text_area :item, 'description', size: "60x12"
+      %br
+      
+      = label :item, :price, 'Price'
+      = number_field :item, 'price', min: 0, step: 0.01
+      
+      
+      %br
+      %br
+      = submit_tag 'Post Listing'
+      = link_to 'Cancel', items_path

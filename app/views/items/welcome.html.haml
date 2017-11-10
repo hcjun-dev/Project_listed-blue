@@ -1,17 +1,19 @@
+.div.container#welcome
 
-
-%h1 Welcome to Listed
-
-%h2 That's Listed
-%br
-%br
-%br
-%br
-%br
-%br
-%br
-
-%h2 
-  = link_to 'Check Out what is Listed', items_path
-  
-  /= link_to 'Test Bootstrap Page', bs_path
+    %h1.div.message.alert.alert-info.text-center#welcome_title
+        
+        %br
+        %br
+        %br
+        That's ≡Listed
+        %br
+        %br
+        %br
+        
+    %p.div.text-center
+        %br
+        %br
+        %br
+        %a.button.btn.btn-primary.btn-lg{:type => "button", :href => items_path} Enter the Dungeon
+      
+      

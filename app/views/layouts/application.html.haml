@@ -1,27 +1,36 @@
 !!!
+
 %html
   %head
-    %title Listed
+    %title ≡Listed
+    %link{href: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel: "stylesheet", integrity: "sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin: "anonymous"}
+    %script{src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity: "sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin: "anonymous"}
     = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    /= javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-
-  %body
-    %h1.title= link_to image_tag('main_logo_290x50.png'), root_path
     
-    %div#google
-      - if current_user
-        Welcome, 
-        = succeed "!" do
-          %strong= current_user.name
-        = link_to "Sign out", signout_path, id: "sign_out"
-      - else
-        = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
-        
-    #main
+  %body
+    %nav.navbar.navbar-light{:role => "navigation", :style => "background-color: #e3f2fd;"}
+      .container-fluid
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %a.navbar-brand{:href => root_path} ≡≡Listed
+        / Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right.button
+            %li.active.div#google
+            - if current_user
+              Welcome, 
+              = succeed "!" do
+                %strong= current_user.name
+              = link_to "Sign out", signout_path, id: "sign_out"
+            - else
+              = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
+      
+    #alerts
       - if flash[:notice]
-        #notice.message= flash[:notice]
+        #notice.message.alert.alert-info= flash[:notice]
       - elsif flash[:warning]
-        #warning.message= flash[:warning]
+        #warning.message.alert.alert-warning= flash[:warning]
 
-      = yield
+    = yield

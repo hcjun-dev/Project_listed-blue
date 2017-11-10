@@ -1,3 +1,23 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-@import "bootstrap-sprockets";
-@import "bootstrap";
+//@import "bootstrap-sprockets";
+//@import "bootstrap-sass";
+div.container#welcome{
+  color: #428bca;
+  text-align: center;
+  vertical-align: center;
+  }
+div#categories{ 
+  white-space: nowrap;
+  display: inline-block;
+  width: 15%;
+}
+h1#all_lists{
+    
+    text-align: center;
+}
+#categories{
+    background-color: white;
+}
+#details{
+    position: right;
+}
