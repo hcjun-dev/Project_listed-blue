@@ -1,22 +1,26 @@
-%h1 Contact
-- if flash[:contact_errors]
-  - flash[:contact_errors].each do |msg| 
-    = msg
-
-= simple_form_for @contact, :method => :post do
-
-  = label :contact, :name, 'Name'
-  = text_field :contact, 'name', required: true
-  
-  = label :contact, :email, 'Email'
-  = email_field :contact, 'email', required: true
-  
-  = label :contact, :message, 'Message'
-  = text_area :contact, 'message', size: "60x12"
-  
-  = hidden_field :contact, 'nickname'
-  
-  %br
-  %br
-  = submit_tag 'Send message'
-  = link_to 'Cancel', session.delete(:return_to)
+%div.container
+  %h1 Email Seller
+  - if flash[:contact_errors]
+    - flash[:contact_errors].each do |msg| 
+      = msg
+      
+  %div#new_contact_forms
+    = simple_form_for @contact, :method => :post do
+    
+      = label :contact, :name, 'Name'
+      = text_field :contact, 'name', required: true, class: "form-control"
+      %br
+      
+      = label :contact, :email, 'Email'
+      = email_field :contact, 'email', required: true, class: "form-control"
+      %br
+      
+      = label :contact, :message, 'Message'
+      = text_area :contact, 'message', size: "60x12", class: "form-control"
+      %br
+      
+      = hidden_field :contact, 'nickname'
+      
+      %br
+      = submit_tag 'Send message', class:"btn btn-primary"
+      = link_to 'Cancel', session[:return_to], class:"btn btn-danger"

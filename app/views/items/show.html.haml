@@ -1,30 +1,50 @@
--# in app/views/items/show.html.haml
-%br
-%h2
-  Details about #{@item.title}
 
-%ul#details
-  %li
-    %b Category:
-    = @item.category
-  %li
-    %b Posted on:
-    = @item.post_date.strftime("%B %d, %Y")
-  %li
-    %b Price:
-    -# shows the cents (2 decimal places)
-    = "$#{ number_with_precision(@item.price, :precision => 2)}" 
-  %li
-    = link_to t('Contact'), new_contact_path(session[:item_id] = @item.id)
-  %li
-    = link_to 'Seller Rating', users_rate_path(session[:user] = @item.user_id)
-    = " #{number_with_precision(@rating_percentage, :precision => 2)}%" if @rating_percentage != nil
-    = " (Total: #{@rating_out_of})" if @rating_out_of != nil
-%p
-  %b Description:
-
-%p#description= @item.description
-
-= link_to 'Edit', edit_item_path(@item)
-= button_to 'Delete', item_path(@item), :method => :delete, :confirm => 'Are you sure?'
-= link_to 'Back to item list', items_path
+%div.col-sm-2= link_to '< Back to item list', items_path, class:"btn btn-warning"
+  
+%div.container
+  %div.col-sm-2
+  -#nothing
+  %div.col-sm-10
+  
+    %h1 #{@item.title}
+    %h6 #{@item.category}
+    
+    
+      
+    
+    
+    %div.row.col-sm-9#item_details
+      %div.h4.container
+        Posted on: #{@item.post_date.strftime("%B %d, %Y")}
+      %div.h4.container
+        Price: $#{ number_with_precision(@item.price, :precision => 2)}
+      %br
+      %div.p.container
+      Description: 
+      
+      %div.p.well
+        #{@item.description}
+        %br
+        %br
+        %br
+        
+    %div.col-sm-1
+    %div.well.col-sm-2.text-center#seller
+      = link_to t('Contact'), new_contact_path(session[:item_id] = @item.id), class: 'btn btn-success'
+      %br
+      = link_to 'Seller Rating', users_rate_path(session[:user] = @item.user_id)
+      = " #{number_with_precision(@rating_percentage, :precision => 2)}%" if @rating_percentage != nil
+      %br
+      = " (Total: #{@rating_out_of})" if @rating_out_of != nil
+      
+      -# Edit & delete (control Panel)
+      %br
+      %br
+      %br
+      = link_to 'Edit', edit_item_path(@item), class:"btn btn-primary"
+      %br
+      %br
+      = button_to 'Delete', item_path(@item), :method => :delete, :confirm => 'Are you sure?', class:"btn btn-danger"
+      
+      
+        

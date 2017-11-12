@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'items#welcome'
   resources :items
   
+  
   # Google
   get 'sessions/create'
   get 'sessions/destroy'

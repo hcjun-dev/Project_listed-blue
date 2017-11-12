@@ -1,7 +1,7 @@
 -#  This file is app/views/items/index.html.haml
-%h1#all_lists Lists
 
-%div.col-sm-3.float.float-left#categories
+
+%div.col-sm-2.float.float-left#categories
   = form_tag items_path, :method => :get, :id =>"categories_form" do
     Include:
     %br
@@ -9,9 +9,8 @@
       = category
       = check_box_tag "categories[#{category}]",1, @filtered_categories.include?(category), :id =>"categories_#{category}"
       %br
-    = button_tag(type: "submit", class: "btn btn-default", :id =>"categories_submit") do
-      Refresh
-      %i.icon-repeat
+    %br
+    = submit_tag 'Refresh', :id =>"categories_submit", class:"btn btn-info"
 
 
     
@@ -21,15 +20,9 @@
 
 -#//maybe ul, then filter_by just like sort_by
 
-
-
-%br
-%br
-%br
-%br
-
-%div.col-sm-8#details
-  %table.table.table-striped#items_table
+%div.col-sm-10#details
+  %h1#all_lists Lists
+  %table.table.table-striped.table-hover#items_table
     %thead.thead-dark
       %tr.info
         %th.col Category
@@ -40,7 +33,7 @@
         
     %tbody
       - @items.each do |item|
-        %tr.clickable_row{}
+        %tr
           %td= item.category
           %td= link_to "#{item.title}", item_path(item)
           %td= "$#{number_with_precision(item.price, :precision => 2)}"

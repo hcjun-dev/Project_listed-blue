@@ -10,22 +10,19 @@
       %br
       
       = label :item, :title, 'Title'
-      = text_field :item, 'title', required: true
-      %br
-      
-      = label :item, :contact, 'Contact'
-      = text_field :item, 'contact', value: current_user.email, :readonly => true
+      = text_field :item, 'title', required: true, class: "form-control"
       %br
       
       = label :item, :description, 'Description'
-      = text_area :item, 'description', size: "60x12"
+      = text_area :item, 'description', size: "60x12", class: "form-control"
       %br
       
       = label :item, :price, 'Price'
-      = number_field :item, 'price', min: 0, step: 0.01
-      
-      
+      = number_field :item, 'price', min: 0, step: 0.01, class: "form-control"
       %br
+      
+      = label :item, :contact, 'Contact'
+      = text_field :item, 'contact', value: current_user.email, :readonly => true, class: "form-control"
       %br
-      = submit_tag 'Post Listing'
-      = link_to 'Cancel', items_path
+      = submit_tag 'Post Listing', class:"btn btn-primary"
+      = link_to 'Cancel', items_path, class:"btn btn-danger"
