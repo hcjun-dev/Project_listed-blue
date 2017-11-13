@@ -4,10 +4,10 @@ Hello world!
     Don't know who the heck Craig is, and this app won't change the way it is,
     but it's fun to make things like this.
 
-Authors
-    Levi VonBank
-    Eric Jun
-    Caleb Fox
+Authors:
+    Levi VonBank,
+    Eric Jun,
+    Caleb Fox,
     Bony Sany
 
 Installation (Cloud 9)
