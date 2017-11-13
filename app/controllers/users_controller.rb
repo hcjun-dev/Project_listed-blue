@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   
   def rating
     if current_user
-      if not current_user.uid.to_s == session[:user]
+      if not current_user.uid.to_s == session[:user]    # Prevents user rating themselves
+        # Adds the rating to the user
         if @user = User.find_by_uid(session[:user])
           if @user.total_rating.nil? && @user.rating.nil?
             @user.rating = BigDecimal.new(user_params[:rating])
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
             @user.total_rating += 5
           end
           @user.save!
+          session.delete(:user)    # Cleans up Session
           redirect_to item_path(session[:item_id]) and return
         else
           flash[:notice] = "No user exists"

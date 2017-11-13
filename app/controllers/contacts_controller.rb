@@ -15,16 +15,17 @@ class ContactsController < ApplicationController
       @item = Item.find(session[:item_id])
       @contact.item_title = @item.title
       @contact.item_email = @item.contact
-      # The End
+      # Attempts to send the message
       @contact.request = request
-      if @contact.deliver
+      if @item.contact && @contact.deliver
         session.delete(:item_id)
         flash.now[:notice] = 'Thank you for your message!'
-        redirect_to session.delete(:return_to)
         flash.keep
+        redirect_to session.delete(:return_to)
       else
         flash[:contact_errors] = @contact.errors.full_messages
-        flash.now[:error] = 'Cannot send message.'
+        flash[:contact_errors].keep_if
+        flash.now[:warning] = 'Cannot send message.'
         render :new
       end
     rescue ScriptError

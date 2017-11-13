@@ -1,8 +1,9 @@
 %div.container
-  %h1 Email Seller
   - if flash[:contact_errors]
     - flash[:contact_errors].each do |msg| 
       = msg
+      
+  %h1 Email Seller
       
   %div#new_contact_forms
     = simple_form_for @contact, :method => :post do
