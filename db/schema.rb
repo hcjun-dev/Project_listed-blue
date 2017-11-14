@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20171030161139) do
     t.string   "contact"
     t.string   "user"
     t.string   "user_id"
+    t.string   "attachment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

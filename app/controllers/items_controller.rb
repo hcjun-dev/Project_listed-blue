@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   
   def item_params
-    params.require(:item).permit(:category, :title, :description, :price, :post_date, :contact, :user)
+    params.require(:item).permit(:category, :title, :description, :price, :post_date, :contact, :user, {attachment: []}, :attachment_cache)
   end
 
   def show
@@ -68,9 +68,12 @@ class ItemsController < ApplicationController
     @item.user_id = current_user.uid.to_s
     @item.user = current_user.name
     @item.contact = current_user.email
-    @item.save!
-    flash[:notice] = "#{@item.title} was successfully created."
-    redirect_to items_path
+    if @item.save!
+      flash[:notice] = "#{@item.title} was successfully created."
+      redirect_to items_path
+    else
+      render :new
+    end
   end
 
   def edit

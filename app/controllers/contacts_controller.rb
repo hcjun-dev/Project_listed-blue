@@ -1,8 +1,20 @@
 class ContactsController < ApplicationController
+
   def contacts_params
     params.require(:contact).permit(:name, :email, :message, :nickname)
   end
-  
+
+  # This allows only users that are signed in the ability to contact people
+  before_filter :is_user?, :only =>[:create]
+  def is_user?
+    if current_user
+      # Do the conttroller action
+    else
+      flash[:notice] = "You must login to contact."
+      send_back
+    end
+  end
+
   def new
     @contact = Contact.new
     session[:return_to] = request.referer
@@ -20,16 +32,24 @@ class ContactsController < ApplicationController
       if @item.contact && @contact.deliver
         session.delete(:item_id)
         flash.now[:notice] = 'Thank you for your message!'
-        flash.keep
-        redirect_to session.delete(:return_to)
+        send_back
       else
         flash[:contact_errors] = @contact.errors.full_messages
-        flash[:contact_errors].keep_if
+        flash.now[:notice] = "There is no contact available ." if !@item.contact
         flash.now[:warning] = 'Cannot send message.'
         render :new
       end
     rescue ScriptError
-      flash[:error] = 'Sorry, this message appears to be spam and was not delivered.'
+      flash[:warning] = 'Sorry, this message appears to be spam and was not delivered.'
+      send_back
     end
   end
+  
+  # Sends user/guest back to the original item listing
+  private
+  def send_back
+    flash.keep
+    redirect_to session.delete(:return_to)
+  end
+  
 end

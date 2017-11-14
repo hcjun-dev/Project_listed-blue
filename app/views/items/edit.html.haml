@@ -23,5 +23,11 @@
       = label :item, :contact, 'Contact'
       = text_field :item, 'contact', value: current_user.email, :readonly => true, class: "form-control"
       %br
+      
+      = label :item, :attachment, 'Attachment'
+      = file_field :item, 'attachment', multiple: true
+      = hidden_field :item, :attachment_cache, :value => @item.attachment_cache
+      %br
+      
       = submit_tag 'Update Listing', class:"btn btn-primary"
       = link_to 'Cancel', items_path, class:"btn btn-warning"

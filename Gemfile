@@ -40,8 +40,9 @@ gem 'simple_form', '~> 3.0.0.rc'
 
 gem 'bootstrap-sass', '~> 3.3.7'
 
-# Paperclip used for adding images in ActiveRecord
-gem "paperclip", "~> 3.1"
+# Carrierwave used for adding images
+gem 'carrierwave', '~> 1.0'
+gem 'carrierwave-i18n'
 
 
 group :development, :test do

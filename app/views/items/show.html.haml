@@ -14,6 +14,7 @@
     
     
     %div.row.col-sm-9#item_details
+      = image_tag @item.attachment_urls.to_s if @item.attachment_urls.present?
       %div.h4.container
         Posted on: #{@item.post_date.strftime("%B %d, %Y")}
       %div.h4.container
