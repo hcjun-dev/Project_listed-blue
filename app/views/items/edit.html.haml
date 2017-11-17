@@ -25,7 +25,7 @@
       %br
       
       = label :item, :attachment, 'Attachment'
-      = file_field :item, 'attachment', multiple: true
+      = file_field :item, 'attachment', multiple: true, accept: 'image/jpg,image/jpeg,image/gif,image/png'
       = hidden_field :item, :attachment_cache, :value => @item.attachment_cache
       %br
       

@@ -11,22 +11,22 @@
     = favicon_link_tag 'favicon.ico'
     
   %body
-    %nav.navbar.navbar-light{:role => "navigation", :style => "background-color: #428bca;"}
+    %nav.navbar.navbar-light{:role => "navigation", :style => "background-color: #377bb5"}
       .navbar-header
         %a.navbar-brand{:href => root_path}
-          %img{:alt => "", :src => "/assets/main_logo.png", width: "140", height: "40"}
+          %img{:alt => "", :src => "/assets/main_logo.png", width: "150", height: "25"}
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
-        %ul.nav.navbar-nav.navbar-right.button.text-white
-          %li.active.div.text-white#google
+        %ul.nav.navbar-nav.navbar-right.button.bg-primary
+          %li.active.div#google
           - if current_user
             Welcome, 
             = succeed "!" do
               %strong= current_user.name
             %br
-            = link_to "Sign out", signout_path, id: "sign_out", class:"btn btn-default btn-xs"
+            = link_to "Sign out", signout_path, id: "sign_out", class:"btn btn-warning btn-xs"
           - else
             %br
-            = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in", class:"btn btn-default btn-sm"
+            = link_to "Access with Google", "/auth/google_oauth2", id: "sign_in", class:"btn btn-default btn-xs"
       
     #alerts
       - if flash[:notice]
