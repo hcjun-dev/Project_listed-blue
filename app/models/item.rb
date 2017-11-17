@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+    has_many :comments
     mount_uploaders :attachment, AttachmentUploader
     serialize :attachment, JSON
     

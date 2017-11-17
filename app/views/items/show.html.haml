@@ -54,5 +54,10 @@
       %br
       = button_to 'Delete', item_path(@item), :method => :delete, :confirm => 'Are you sure?', class:"btn btn-danger"
       
-      
+    
+    %div.p.container
+    %strong Comments:
+    = render @item.comments
+    %h3 Add a comment:
+    = render "comments/form"
         

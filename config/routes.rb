@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'items#welcome'
-  resources :items
+  resources :items do
+    resources :comments
+  end
   
   
   # Google
