@@ -26,23 +26,23 @@ Internet connection
 On the environment of C9,
 
 #### Setting up rails server configuration
-    ```
+    
     curl -fsSL c9setup.saasbook.info | bash --login && rvm use 2.3.0 --default
-    ```
+    
 #### Pulling from the github
-    ```
+    
     git clone git@github.com:hcjun94/listed-blue.git
     cd listed-blue
-    ```
+    
 #### Bundle Installation
-    ```
+    
     bundle install --without production
     bundle exec rake db:setup
-    ```
+    
 #### Running the actual server
-    ```
+    
     rails server -p $PORT -b $IP
-    ```
+    
 ##### compact version
 ```
 curl -fsSL c9setup.saasbook.info | bash --login && rvm use 2.3.0 --default
