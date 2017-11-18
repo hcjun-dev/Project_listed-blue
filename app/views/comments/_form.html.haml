@@ -1,12 +1,12 @@
-= form_for([@item, @item.comments.build]) do |f|
-  %p
-    = f.label :name
-    %br/
-    = f.text_field :name
-  %p
-    = f.label :body
-    %br/
-    = f.text_area :body
-  %br/
-  %p
-    = f.submit
+- if current_user
+  = form_for([@item, @item.comments.build]) do |f|
+    %p
+      = f.label :Youare
+      = f.text_field :name, :readonly => true,  value: current_user.name, class: "form-control"
+    %p
+      = f.label :Comment
+      %br
+      = f.text_area :body, class: "form-control"
+    %br
+    %p
+      = submit_tag 'Post Comment', class:"btn btn-primary"

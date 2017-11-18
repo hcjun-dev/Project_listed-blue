@@ -20,7 +20,7 @@
         Price: $#{ number_with_precision(@item.price, :precision => 2)}
       %br
       %div.p.container
-      Description: 
+      %strong Description: 
       
       %div.p.well
         #{@item.description}
@@ -29,12 +29,20 @@
         %br
         
       %div.p.container
-      Photos:
+      %strong Photos:
       %div.p
       - if @item.attachment?
         - @item.attachment.each do |attachment|
           = link_to(image_tag(attachment.thumb.url, alt: 'Image'), attachment.url, target: '_blank')
       -# THIS IS WHERE THE PHOTOS GO
+      
+      
+      %div.p.container
+      %strong Comments:
+      %div.p
+        = render @item.comments
+        %strong Add a comment:
+        = render "comments/form"
         
     %div.col-sm-1
     %div.well.col-sm-2.text-center#seller
@@ -55,9 +63,4 @@
       = button_to 'Delete', item_path(@item), :method => :delete, :confirm => 'Are you sure?', class:"btn btn-danger"
       
     
-    %div.p.container
-    %strong Comments:
-    = render @item.comments
-    %h3 Add a comment:
-    = render "comments/form"
         
