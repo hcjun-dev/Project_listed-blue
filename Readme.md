@@ -78,3 +78,8 @@ This project is licensed under the MIT License.
 ## Acknowledgments
 
 * Special Thanks to Jonathan Hardwick, our professor of IT484 class.
+
+## Known Bugs
+
+* Shared C9 workspace with github does not show who did the commit.
+* C9 still shows the color of the person did the work.
