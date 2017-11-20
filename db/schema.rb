@@ -30,14 +30,15 @@ ActiveRecord::Schema.define(version: 20171117211223) do
     t.decimal  "price"
     t.datetime "post_date"
     t.string   "contact"
-    t.string   "user"
+    t.string   "user_name"
     t.string   "user_id"
-    t.string   "attachment"
+    t.string   "attachments"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "authority"
     t.string   "provider"
     t.string   "uid"
     t.string   "name"

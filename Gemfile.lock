@@ -157,6 +157,8 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     pg (0.21.0)
+    protected_attributes (1.1.0)
+      activemodel (>= 4.0.1, < 5.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -290,6 +292,7 @@ DEPENDENCIES
   mini_magick
   omniauth-google-oauth2
   pg
+  protected_attributes
   rails (= 4.2.7.1)
   rails_12factor
   rspec-rails

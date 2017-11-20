@@ -3,7 +3,7 @@
 
 
   %div#new_item_forms
-    = form_tag items_path(@user), html: {multipart: :true}, :method => :post do
+    = form_tag items_path(@user), multipart: :true, :method => :post do
     
       = label :item, :category, 'Category'
       = select :item, :category, Item.all_categories
@@ -25,8 +25,8 @@
       = text_field :item, 'contact', value: current_user.email, :readonly => true, class: "form-control"
       %br
       
-      = label :item, :attachment, 'Attachment'
-      = file_field :item, 'attachment', multiple: true, accept: 'image/jpg,image/jpeg,image/gif,image/png'
+      = label :item, :attachments, 'Attachments'
+      = file_field :item, 'attachments', multiple: true, accept: 'image/jpg,image/jpeg,image/gif,image/png'
       %br
       
       = submit_tag 'Post Listing', class:"btn btn-primary"

@@ -19,12 +19,16 @@ module Listed
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    
+    #used for routing not found page
+    config.exceptions_app = self.routes
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     
     # Need to send contact email
     config.action_mailer.perform_deliveries = true
+    
     
     # SMTP settings for gmail
     config.action_mailer.delivery_method = :smtp  

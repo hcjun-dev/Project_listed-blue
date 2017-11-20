@@ -5,8 +5,7 @@
     %title Listed
     %link{href: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel: "stylesheet", integrity: "sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin: "anonymous"}
     %script{src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity: "sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin: "anonymous"}
-    = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
-    /= javascript_include_tag 'application', 'data-turbolinks-track' => true
+    %link{href:"custom.css", rel: "stylesheet", type: "text/css"}
     = csrf_meta_tags
     = favicon_link_tag 'favicon.ico'
     = cloudinary_js_config
@@ -16,7 +15,7 @@
       .navbar-header
         %a.navbar-brand{:href => root_path}
           %img{:alt => "", :src => "/assets/main_logo.png", width: "150", height: "25"}
-      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      .collapse.navbar-collapse
         %ul.nav.navbar-nav.navbar-right.button.bg-primary
           %li.active.div#google
           - if current_user
@@ -36,5 +35,7 @@
         #warning.message.alert.alert-warning= flash[:warning]
     
     = yield
-  %br
-  %br
+    
+    -# examplefooter
+    %div#footer
+    ____________

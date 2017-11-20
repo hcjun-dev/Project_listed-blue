@@ -3,7 +3,7 @@
   
   
   %div#edit_item_forms
-    = form_tag item_path(@item), html: {multipart: :true}, :method => :put do
+    = form_tag item_path(@item), multipart: :true, :method => :put do
       
       = label :item, :category, 'Category'
       = select :item, :category, Item.all_categories
@@ -24,9 +24,9 @@
       = text_field :item, 'contact', value: current_user.email, :readonly => true, class: "form-control"
       %br
       
-      = label :item, :attachment, 'Attachment'
-      = file_field :item, 'attachment', multiple: true, accept: 'image/jpg,image/jpeg,image/gif,image/png'
-      = hidden_field :item, :attachment_cache, :value => @item.attachment_cache
+      = label :item, :attachments, 'Attachments'
+      = file_field :item, 'attachments', multiple: true, accept: 'image/jpg,image/jpeg,image/gif,image/png'
+      = hidden_field :item, :attachments_cache, :value => @item.attachments_cache
       %br
       
       = submit_tag 'Update Listing', class:"btn btn-primary"

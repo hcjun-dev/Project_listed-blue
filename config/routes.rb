@@ -18,8 +18,7 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   
   resources :sessions, only: [:create, :destroy]
-  resource :home, only: [:show]
-  
+
   get 'users/rate'
   post 'users/rating'
   resources :users, only: [:rate, :rating]
@@ -27,5 +26,13 @@ Rails.application.routes.draw do
   # Contact form
   match '/contacts', to: 'contacts#new', via: 'get'
   resources "contacts", only: [:new, :create]
+  
+  #admin Page
+  get 'admin', to: 'admin'
+  get 'controlpanel', to:'items#welcome'
+  resources :admin
+  
+  #No custom URL for security purpose
+  match '*path', to: redirect('/'), via: :all
   
 end

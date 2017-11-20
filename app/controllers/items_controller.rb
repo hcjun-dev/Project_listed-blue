@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.post_date = Time.now
     @item.user_id = current_user.uid.to_s
-    @item.user = current_user.name
+    @item.user_name = current_user.name
     @item.contact = current_user.email
     if @item.save!
       flash[:notice] = "#{@item.title} was successfully created."
@@ -101,18 +101,13 @@ class ItemsController < ApplicationController
     end
   end
   
+  private
   # Deletes items after they hit a 90 mark
   def delete_old_records
     Item.where('created_at < ?', 90.days.ago).each do |item|
       item.destroy
     end
     # or Model.delete_all('created_at < ?', 90.days.ago) if you don't need callbacks
-  end
-  
-  def upload_attachment(attachment)
-    attachment.each do |file|
-      Cloudinary::Uploader.upload(file)
-    end
   end
   
 end

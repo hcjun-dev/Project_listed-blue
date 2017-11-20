@@ -5,8 +5,8 @@ class ContactsController < ApplicationController
   end
 
   # This allows only users that are signed in the ability to contact people
-  before_filter :is_user?, :only =>[:create]
-  def is_user?
+  before_filter :correct_user?, :only =>[:create]
+  def correct_user?
     if current_user
       # Do the conttroller action
     else

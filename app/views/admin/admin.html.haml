@@ -1,0 +1,14 @@
+%br
+%br
+%div.col-xs-4
+
+%div.container.col-xs-4
+    %div.input-group.lg
+    = form_tag admin_path(@user), :method => :post do
+        %span.input-group-addon
+            %i.glyphicon.glyphicon-lock
+        %input#password.form-control{:name => "password", :placeholder => "Password", :type => "password"}
+        %br
+        %br
+        = submit_tag 'I solemnly swear that I am up to no good.', class: "btn btn-danger"
+

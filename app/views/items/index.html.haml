@@ -38,7 +38,7 @@
           %td= item.category
           %td= link_to "#{item.title}", item_path(item)
           %td= "$#{number_with_precision(item.price, :precision => 2)}"
-          %td= item.user
+          %td= item.user_name
           %td= item.post_date.strftime("%Y-%m-%d %I:%M %P")
 
   %a.button.btn.btn-primary.btn{:type => "button", :href => new_item_path} List yours

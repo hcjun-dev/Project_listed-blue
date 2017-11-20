@@ -1,5 +1,4 @@
-require 'carrierwave/orm/activerecord'
-class AttachmentUploader < CarrierWave::Uploader::Base
+class AttachmentsUploader < CarrierWave::Uploader::Base
   permissions 0777
 
   # Include RMagick or MiniMagick support:

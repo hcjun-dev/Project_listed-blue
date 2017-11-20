@@ -45,6 +45,8 @@ gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-i18n'
 gem 'mini_magick'
 gem 'cloudinary'
+
+gem 'protected_attributes'
 gem 'mime-types'
 
 group :development, :test do
