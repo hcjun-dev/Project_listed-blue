@@ -33,11 +33,12 @@ class ItemsController < ApplicationController
       redirect_to items_path :sort_by => @sort_by, :categories => @filtered_categories
     end
     @items = Item.order(@sort_by).where(category: @filtered_categories)
+    delete_old_records  # Runs 90 day check to clean up database
   end
   
   # This allows only users that are signed in the ability to make listings
-  before_filter :is_user?, :only =>[:create, :new]
-  def is_user?
+  before_filter :logged_in_user?, :only =>[:create, :new]
+  def logged_in_user?
     if current_user
       # Do the conttroller action
     else
@@ -47,8 +48,8 @@ class ItemsController < ApplicationController
   end
   
   # This allows only the user who created the listing to change it
-  before_filter :can_user?, :only =>[:edit, :update, :destroy]
-  def can_user?
+  before_filter :correct_user?, :only =>[:edit, :update, :destroy]
+  def correct_user?
     @item = Item.find(params[:id])
     if current_user && @item.user_id == current_user.uid.to_s
       # Do the conttroller action
@@ -100,4 +101,22 @@ class ItemsController < ApplicationController
     end
   end
   
+  # Deletes items after they hit a 90 mark
+  def delete_old_records
+    Item.where('created_at < ?', 90.days.ago).each do |item|
+      item.destroy
+    end
+    # or Model.delete_all('created_at < ?', 90.days.ago) if you don't need callbacks
+  end
+  
+  def upload_attachment(attachment)
+    attachment.each do |file|
+      Cloudinary::Uploader.upload(file)
+    end
+  end
+  
 end
+    
+  
+  
+

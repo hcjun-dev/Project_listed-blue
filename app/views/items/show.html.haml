@@ -27,7 +27,7 @@
         %br
         %br
         %br
-        
+      
       %div.p.container
       %strong Photos:
       %div.p
@@ -35,7 +35,6 @@
         - @item.attachment.each do |attachment|
           = link_to(image_tag(attachment.thumb.url, alt: 'Image'), attachment.url, target: '_blank')
       -# THIS IS WHERE THE PHOTOS GO
-      
       
       %div.p.container
       %strong Comments:

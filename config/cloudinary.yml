@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: listed
+  api_key: '911973817895666'
+  api_secret: FY2Ll2oxFAw-uewSQ7XJ2LVyuns
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: listed
+  api_key: '911973817895666'
+  api_secret: FY2Ll2oxFAw-uewSQ7XJ2LVyuns
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: listed
+  api_key: '911973817895666'
+  api_secret: FY2Ll2oxFAw-uewSQ7XJ2LVyuns
+  enhance_image_tag: true
+  static_image_support: false

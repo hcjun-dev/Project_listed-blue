@@ -3,7 +3,7 @@
   
   
   %div#edit_item_forms
-    = form_tag item_path(@item), :method => :put do
+    = form_tag item_path(@item), html: {multipart: :true}, :method => :put do
       
       = label :item, :category, 'Category'
       = select :item, :category, Item.all_categories
@@ -30,4 +30,4 @@
       %br
       
       = submit_tag 'Update Listing', class:"btn btn-primary"
-      = link_to 'Cancel', items_path, class:"btn btn-warning"
+      = link_to 'Cancel', item_path(@item), class:"btn btn-warning"

@@ -3,7 +3,7 @@
 
 
   %div#new_item_forms
-    = form_tag items_path(@user), :method => :post do
+    = form_tag items_path(@user), html: {multipart: :true}, :method => :post do
     
       = label :item, :category, 'Category'
       = select :item, :category, Item.all_categories
