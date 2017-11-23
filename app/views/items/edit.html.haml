@@ -25,8 +25,7 @@
       %br
       
       = label :item, :attachments, 'Attachments'
-      = file_field :item, 'attachments', multiple: true, accept: 'image/jpg,image/jpeg,image/gif,image/png'
-      = hidden_field :item, :attachments_cache, :value => @item.attachments_cache
+      = file_field :item, 'attachments', accept: 'image/jpg,image/jpeg,image/gif,image/png', multiple: true
       %br
       
       = submit_tag 'Update Listing', class:"btn btn-primary"

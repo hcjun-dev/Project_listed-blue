@@ -26,7 +26,7 @@
       %br
       
       = label :item, :attachments, 'Attachments'
-      = file_field :item, 'attachments', multiple: true, accept: 'image/jpg,image/jpeg,image/gif,image/png'
+      = file_field :item, 'attachments', accept: 'image/jpg,image/jpeg,image/gif,image/png', multiple: true
       %br
       
       = submit_tag 'Post Listing', class:"btn btn-primary"

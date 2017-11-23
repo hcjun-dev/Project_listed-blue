@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   
   def item_params
-    params.require(:item).permit(:category, :title, :description, :price, :post_date, :contact, :user, {attachment:[]}, :attachment_cache)
+    params.require(:item).permit(:category, :title, :description, :price, :post_date, :contact, :user_name, {attachments: []}, :attachments_cache)
   end
 
   def show
@@ -75,6 +75,7 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+    # upload_images(@item.attachments)
   end
 
   def edit
@@ -95,6 +96,7 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
   
+  private
   def check_for_cancel
     if params[:commit] == "Cancel"
       redirect_to items_path
@@ -108,6 +110,13 @@ class ItemsController < ApplicationController
       item.destroy
     end
     # or Model.delete_all('created_at < ?', 90.days.ago) if you don't need callbacks
+  end
+  
+  private
+  def upload_images(images)
+    images.each do |i|
+      Cloudinary::Uploader.upload(i)
+    end
   end
   
 end

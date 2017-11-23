@@ -1,3 +1,4 @@
+require 'carrierwave/processing/mini_magick'
 class AttachmentsUploader < CarrierWave::Uploader::Base
   permissions 0777
 
@@ -30,12 +31,17 @@ class AttachmentsUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-
+  
   # Create different versions of your uploaded files:
-  version :thumb do
-    process :eager => true
-    process resize_to_fit: [50, 50]
-  end
+  # version :thumbnail do
+  #   process :eager => true
+  #   process resize_to_fit: [50, 50]
+  # end
+  
+  # version :standard do
+  #   process :eager => true
+  #   process :resize_to_fill => [200, 200, :north]
+  # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
