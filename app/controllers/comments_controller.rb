@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
         @post = Item.find(params[:item_id])
         @comment = @item.comments.find(params[:id])
         @comment.destroy
+
         
         redirect_to item_path(@item)
     end

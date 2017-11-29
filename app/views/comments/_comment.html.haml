@@ -3,5 +3,4 @@
     %p.comment_name.panel-heading= comment.name
     %p.comment_body.panel-body= comment.body
 
-/%p
-/= button_to 'Delete', item_path(@item.comments.find(params[:id])),  :method => :delete, :confirm => 'Are you sure?', class:'button'
+    -# = button_to 'Delete', item_path(@item.comments.itself), :method => :delete, :confirm => 'Are you sure?', class:"btn btn-danger"
