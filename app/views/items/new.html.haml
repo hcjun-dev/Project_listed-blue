@@ -1,6 +1,10 @@
 %div.container
+  - if flash[:item_errors]
+    %div#alerts
+      - flash[:item_errors].each do |msg| 
+        = msg
+      
   %h1 Create New Item
-
 
   %div#new_item_forms
     = form_tag items_path(@user), multipart: :true, :method => :post do
@@ -26,6 +30,7 @@
       %br
       
       = label :item, :attachments, 'Attachments'
+      = hidden_field :item, :attachments_cache
       = file_field :item, 'attachments', accept: 'image/jpg,image/jpeg,image/gif,image/png', multiple: true
       %br
       

@@ -69,10 +69,11 @@ class ItemsController < ApplicationController
     @item.user_id = current_user.uid.to_s
     @item.user_name = current_user.name
     @item.contact = current_user.email
-    if @item.save!
+    if @item.save
       flash[:notice] = "#{@item.title} was successfully created."
       redirect_to items_path
     else
+      flash[:item_errors] = @item.errors.full_messages
       render :new
     end
     # upload_images(@item.attachments)
