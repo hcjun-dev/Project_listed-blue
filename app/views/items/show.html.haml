@@ -31,9 +31,9 @@
       %div.p.container
       %strong Photos:
       %div.p.img-responsive
-      - if @item.attachments?
-        - @item.attachments.each do |attachment|
-          = link_to(image_tag(attachment.url))
+        - if @item.attachments?
+          - @item.attachments.each do |attachment|
+            = link_to(image_tag(attachment.url))
       -# THIS IS WHERE THE PHOTOS GO
       
       %div.p.container
